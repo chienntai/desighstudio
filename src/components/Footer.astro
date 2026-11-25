@@ -1,0 +1,52 @@
+---
+// Minimal footer: only uses info already on the site.
+// Add social links (IG / YouTube / Bandcamp) to .footer-links when available.
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="footer-inner">
+		<p class="footer-brand">© {year} Desigh Studio</p>
+		<ul class="footer-links">
+			<li><a href="mailto:booking@chienntai.com">booking@chienntai.com</a></li>
+			<li><a href="#top">Back to top ↑</a></li>
+		</ul>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		border-top: 1px solid var(--border);
+	}
+
+	.footer-inner {
+		max-width: 1600px;
+		margin: 0 auto;
+		padding: 3rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
+		font-size: 0.9rem;
+		color: var(--text-dim);
+	}
+
+	.footer-links {
+		display: flex;
+		gap: 3rem;
+	}
+
+	@media (max-width: 640px) {
+		.footer-inner {
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 2.5rem 2rem;
+			gap: 1rem;
+		}
+
+		.footer-links {
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+	}
+</style>

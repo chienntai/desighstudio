@@ -6,6 +6,7 @@ import Pricing from '../components/home/Pricing.astro';
 import Booking from '../components/home/Booking.astro';
 import PersonalWebsite from '../components/home/PersonalWebsite.astro';
 import Demos from '../components/home/Demos.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
@@ -15,7 +16,7 @@ import Demos from '../components/home/Demos.astro';
 			<ul class="nav-links">
 				<li><a href="#services">Services</a></li>
 				<li><a href="#projects">Demos</a></li>
-				<li><a href="#pricing">Pricing</a></li>
+				<li><a href="#how-we-work">How we work</a></li>
 				<li><a href="#booking">Contact</a></li>
 				<li><a href="#about">About</a></li>
 			</ul>
@@ -35,6 +36,8 @@ import Demos from '../components/home/Demos.astro';
 			<PersonalWebsite />
 		</div>
 	</main>
+
+	<Footer />
 </Layout>
 
 <style>
@@ -97,9 +100,30 @@ import Demos from '../components/home/Demos.astro';
 		}
 	}
 
+	/* On phones, links move to a second row instead of disappearing */
 	@media (max-width: 640px) {
+		.nav-inner {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.5rem;
+			padding: 1rem 2rem 0.75rem;
+		}
+
 		.nav-links {
+			justify-content: space-between;
+			gap: 0.75rem;
+			font-size: 0.78rem;
+			overflow-x: auto;
+			scrollbar-width: none;
+			white-space: nowrap;
+		}
+
+		.nav-links::-webkit-scrollbar {
 			display: none;
+		}
+
+		.hero {
+			margin-top: 6rem;
 		}
 	}
 </style>

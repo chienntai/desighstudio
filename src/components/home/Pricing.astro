@@ -1,7 +1,47 @@
-<section id="pricing" class="section-card">
-	<h2>Pricing</h2>
+<section id="how-we-work" class="section-card">
+	<h2>How we work</h2>
 	<p>
 		Pricing is scoped per project and depends on format, length, deliverables, revision rounds, and timeline.
 	</p>
 	<p>Typical engagements can be quoted for one-off commissions, production packages, or longer collaborations.</p>
+
+	<!-- PLACEHOLDER: replace these blocks with real content, then delete .placeholder styles -->
+	<div class="placeholder-grid">
+		<div class="placeholder">待補內容 1</div>
+		<div class="placeholder">待補內容 2</div>
+		<div class="placeholder">待補內容 3</div>
+	</div>
 </section>
+
+<style>
+	.placeholder-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+
+	.placeholder {
+		min-height: 240px;
+		border: 2px dashed var(--accent);
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--accent);
+		font-size: 1.25rem;
+		font-weight: 600;
+		background: rgba(255, 107, 53, 0.05);
+	}
+
+	@media (max-width: 768px) {
+		.placeholder-grid {
+			grid-template-columns: 1fr;
+			gap: 1.25rem;
+		}
+
+		.placeholder {
+			min-height: 160px;
+		}
+	}
+</style>
