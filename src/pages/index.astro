@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Intro from '../components/home/Intro.astro';
+import Services from '../components/home/Services.astro';
+import Pricing from '../components/home/Pricing.astro';
+import Booking from '../components/home/Booking.astro';
+import PersonalWebsite from '../components/home/PersonalWebsite.astro';
+import Demos from '../components/home/Demos.astro';
+---
+
+<Layout>
+	<nav class="site-nav" aria-label="Section links">
+		<div class="nav-inner">
+			<a class="brand" href="#top">Desigh Studio</a>
+			<ul class="nav-links">
+				<li><a href="#services">Services</a></li>
+				<li><a href="#projects">Demos</a></li>
+				<li><a href="#pricing">Pricing</a></li>
+				<li><a href="#booking">Contact</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<main id="top" class="page-shell">
+		<header class="hero">
+			<Intro />
+		</header>
+
+		<div class="section-grid">
+			<Services />
+			<Demos />
+			<Pricing />
+			<Booking />
+			<PersonalWebsite />
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.site-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		background: var(--bg);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.nav-inner {
+		max-width: 1600px;
+		margin: 0 auto;
+		padding: 2rem 3rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	.brand {
+		font-size: 1rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+	}
+
+	.nav-links {
+		display: flex;
+		gap: 3rem;
+		font-size: 0.9rem;
+	}
+
+	.nav-links a {
+		color: var(--text-dim);
+	}
+
+	.hero {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		padding: 0 3rem;
+		margin-top: 5rem;
+	}
+
+	@media (max-width: 768px) {
+		.nav-inner {
+			padding: 1.5rem 2rem;
+		}
+
+		.nav-links {
+			gap: 2rem;
+			font-size: 0.85rem;
+		}
+
+		.hero {
+			padding: 0 2rem;
+			margin-top: 4rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.nav-links {
+			display: none;
+		}
+	}
+</style>

@@ -1,0 +1,261 @@
+---
+import CarouselControls from './CarouselControls.astro';
+---
+<section id="projects" class="section-card">
+<header class="section-header">
+		<h2>Demos</h2>
+		<p class="section-intro">Selected work spanning screen scoring, stage and installation, and production samples.</p>
+	</header>
+
+	<div class="carousel-container">
+		<div class="carousel-controls-overlay">
+			<CarouselControls dotCount={3} />
+		</div>
+
+		<div class="demo-list" id="demo-track">
+			<div class="demo-layout">
+				<div class="demo-copy">
+					<h3>Come Back To Me (2025)</h3>
+					<p>Original Score</p>
+					<p><strong>Chienn Tai</strong> | Music Composer, Sound Designer</p>
+					<p>In Collaboration with:<br>
+					<strong>Mary Mark</strong> | Director, 3D & Movement Artist<br>
+					<strong>Rina Pellerin</strong> | Movement Artist</p>
+				</div>
+				<div class="demo-player media-stage">
+					<iframe class="yt-embed" src="https://www.youtube-nocookie.com/embed/sj5lWgNtTpc?si=K_q0BJo_htShsjNQ" title="Come Back To Me (2025)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+				</div>
+			</div>
+
+			<div class="demo-layout">
+				<div class="demo-copy">
+					<h3>Sour Gummies Don't Cry</h3>
+					<p>Created and performed by <strong>Mengna Da</strong></p>
+					<p>Music composed and performed by <strong>Chienn Tai</strong></p>
+				</div>
+				<div class="demo-player media-stage">
+					<iframe class="yt-embed" src="https://www.youtube-nocookie.com/embed/wsfErMeyc5s" title="Artificial Agency" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+				</div>
+			</div>
+			
+			<div class="demo-layout">
+				<div class="demo-copy">
+					<h3>The Play</h3>
+					<p>Original Score</p>
+				</div>
+				<div class="demo-player media-stage">
+					<iframe class="bandcamp-embed" src="https://bandcamp.com/EmbeddedPlayer/album=2519506769/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless title="The Play Original Score by Chienn Tai" loading="lazy"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const track = document.getElementById('demo-track');
+	// Only get dots that are part of the active controls
+	const dots = document.querySelectorAll('.carousel-dots .dot');
+	const prevBtns = document.querySelectorAll('.prev');
+	const nextBtns = document.querySelectorAll('.next');
+	
+	if (track) {
+		const updateActiveState = () => {
+			const slideWidth = track.clientWidth;
+			const scrollPosition = track.scrollLeft;
+			// Use a small threshold so it doesn't wait for a full slide snap to turn active
+			const index = Math.round(scrollPosition / slideWidth);
+			
+			dots.forEach((dot, i) => {
+				dot.classList.toggle('active', i === index);
+			});
+		};
+
+		track.addEventListener('scroll', updateActiveState, { passive: true });
+
+		dots.forEach((dot, i) => {
+			dot.addEventListener('click', () => {
+				track.scrollTo({
+					left: track.clientWidth * i,
+					behavior: 'smooth'
+				});
+			});
+		});
+
+		prevBtns.forEach(btn => {
+			btn.addEventListener('click', () => {
+				track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+			});
+		});
+
+		nextBtns.forEach(btn => {
+			btn.addEventListener('click', () => {
+				track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+			});
+		});
+	}
+</script>
+
+<style>
+	h2 {
+		margin-bottom: 0;
+	}
+
+	.section-header {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 2.5rem;
+	}
+
+	.section-intro {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: var(--text-dim);
+		margin-top: 1rem;
+		max-width: 60ch;
+	}
+
+	.carousel-container {
+		position: relative;
+		margin: 0 -3rem; /* Bleed to page edges */
+		padding: 0 3rem;
+	}
+
+	.carousel-controls-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 3rem;
+		height: 100%;
+		display: flex;
+		align-items: flex-end;
+		padding-bottom: 1rem; /* Matches media-stage padding or aligns it cleanly */
+		pointer-events: none; /* Let clicks pass through empty areas */
+		z-index: 10;
+		width: calc(35.7% - 2rem); /* Matches the 1fr column width approximately */
+	}
+
+	.carousel-controls-overlay > * {
+		pointer-events: auto; /* Re-enable clicks on controls */
+	}
+
+	.demo-list {
+		display: flex;
+		gap: 2rem;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		scrollbar-width: none; /* Firefox */
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.demo-list::-webkit-scrollbar {
+		display: none; /* Safari/Chrome */
+	}
+
+	.demo-layout {
+		flex: 0 0 100%;
+		scroll-snap-align: center;
+		display: grid;
+		grid-template-columns: 1fr 1.8fr;
+		gap: 4rem;
+		align-items: center;
+		text-align: left;
+		padding: 0;
+	}
+
+	.demo-copy {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		height: 100%;
+		padding-right: 2rem;
+		min-height: 250px;
+	}
+
+	.demo-copy h3 {
+		margin-bottom: 0.5rem;
+		color: var(--text);
+	}
+
+	.demo-copy p {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: var(--text-dim);
+		margin-bottom: 1rem;
+	}
+	
+	.demo-copy p:last-child {
+		margin-bottom: 0;
+	}
+	
+	.demo-copy strong {
+		color: var(--text);
+		font-weight: 500;
+	}
+
+	.demo-player {
+		width: 100%;
+	}
+	
+	.media-stage {
+		background: rgba(255, 255, 255, 0.02);
+		border: 1px solid var(--border);
+		border-radius: 12px;
+		aspect-ratio: 16 / 9;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		width: 100%;
+	}
+
+	.media-stage iframe {
+		display: block;
+		border: 0;
+		border-radius: 4px;
+	}
+
+	.bandcamp-embed {
+		width: 100%;
+		max-width: 400px;
+		height: 120px;
+	}
+
+	.yt-embed {
+		width: 100%;
+		height: 100%;
+	}
+
+	@media (max-width: 1024px) {
+		.section-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2rem;
+		}
+
+		.carousel-controls-overlay {
+			position: static;
+			width: 100%;
+			padding-top: 1.5rem;
+			padding-bottom: 0;
+			justify-content: center;
+			margin-bottom: 2rem;
+			pointer-events: auto;
+		}
+
+		.demo-layout {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+		}
+		
+		.demo-copy {
+			padding-right: 0;
+			min-height: auto;
+		}
+
+		.carousel-container {
+			margin: 0 -2rem;
+			padding: 0 2rem;
+		}
+	}
+</style>

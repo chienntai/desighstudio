@@ -1,0 +1,145 @@
+<section id="services" class="section-card full-bleed">
+	<h2>Services</h2>
+	<div class="service-grid">
+		<article class="service-card" style="background-image: url('/img/music.jpg')">
+			<div class="service-content">
+				<h3>Music</h3>
+				<ul>
+					<li>Scoring for screens: features, festivals, short films, TV, commercial, shorts, and reels</li>
+					<li>Arrangement, demo production, orchestration, and track production</li>
+					<li>Keys and piano performance and recording</li>
+					<li>Music editing and sound design</li>
+				</ul>
+			</div>
+			<div class="service-credit">Photo by Mathieu Lobstein / Unsplash</div>
+		</article>
+		<article class="service-card" style="background-image: url('/img/performance.png')">
+			<div class="service-content">
+				<h3>Stages & installation</h3>
+				<ul>
+					<li>Theater, plays, drama, dance, performance, and musicals</li>
+					<li>Installations and sound installation</li>
+					<li>Audio-visual interactives</li>
+				</ul>
+			</div>
+		</article>
+		<article class="service-card" style="background-image: url('/img/podcast.jpg')">
+			<div class="service-content">
+				<h3>Commissioned music productions</h3>
+				<ul>
+					<li>Podcasts, radio, jingles, and collaborations</li>
+					<li>Custom OST, ambient, orchestral ambient, classical, contemporary, pop, and fusion demos</li>
+				</ul>
+			</div>
+			<div class="service-credit">Photo by Jukka Aalho / Unsplash</div>
+		</article>
+	</div>
+</section>
+
+<style>
+	.full-bleed {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+	}
+
+	.full-bleed h2 {
+		padding: 0 3rem;
+		max-width: 1600px;
+		margin: 0 auto 4rem;
+	}
+
+	.service-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0;
+	}
+
+	.service-card {
+		position: relative;
+		min-height: 600px;
+		background-size: cover;
+		background-position: center 30%;
+		overflow: hidden;
+	}
+
+	.service-card::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+		z-index: 1;
+	}
+
+	.service-card--no-image {
+		background: var(--bg);
+	}
+
+	.service-card--no-image::before {
+		display: none;
+	}
+
+	.service-content {
+		position: relative;
+		z-index: 2;
+		padding: 3rem;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		max-width: 500px;
+	}
+
+	.service-card h3 {
+		margin-bottom: 2rem;
+		font-size: 2rem;
+	}
+
+	.service-card ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.service-card li {
+		color: var(--text);
+		line-height: 1.5;
+		font-size: 0.9rem;
+	}
+
+	.service-credit {
+		position: absolute;
+		bottom: 1rem;
+		right: 1.5rem;
+		font-size: 0.7rem;
+		color: rgba(255,255,255,0.5);
+		z-index: 2;
+	}
+
+	@media (max-width: 1024px) {
+		.service-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.service-card {
+			min-height: 500px;
+		}
+
+		.full-bleed h2 {
+			padding: 0 2rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.service-card {
+			min-height: 450px;
+		}
+
+		.service-content {
+			padding: 2rem;
+		}
+
+		.service-card h3 {
+			font-size: 1.75rem;
+		}
+	}
+</style>

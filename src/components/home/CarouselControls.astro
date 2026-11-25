@@ -1,0 +1,76 @@
+---
+export interface Props {
+	dotCount: number;
+	class?: string;
+}
+
+const { dotCount, class: className = '' } = Astro.props;
+---
+
+<div class={`carousel-controls ${className}`}>
+	<button class="nav-btn prev" aria-label="Previous demo">
+		<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+	</button>
+	<div class="carousel-dots">
+		{Array.from({ length: dotCount }).map((_, i) => (
+			<button class={`dot ${i === 0 ? 'active' : ''}`} aria-label={`Go to demo ${i + 1}`}></button>
+		))}
+	</div>
+	<button class="nav-btn next" aria-label="Next demo">
+		<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+	</button>
+</div>
+
+<style>
+	.carousel-controls {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		pointer-events: auto; /* Required for the overlay implementation */
+	}
+
+	.nav-btn {
+		background: none;
+		border: 1px solid var(--border);
+		color: var(--text);
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.nav-btn:hover {
+		background: var(--border);
+		color: var(--accent);
+	}
+
+	.carousel-dots {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--text-dim);
+		border: none;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		padding: 0;
+	}
+
+	.dot:hover {
+		background: var(--text);
+	}
+
+	.dot.active {
+		background: var(--accent);
+		transform: scale(1.25);
+	}
+</style>

@@ -1,0 +1,74 @@
+<div class="hero-copy">
+	<h1>Desigh<br>Studio</h1>
+	<p class="lede">
+		A studio for scoring, sound design, musical direction, and interactive work across screen, stage, and installation.
+	</p>
+	<p>
+		Founded artists based in New York and Boston, the practice combines composition, performance, technology, and theatrical sensibility into clear deliverables for production teams, artists, and agencies.
+	</p>
+	<div class="hero-actions">
+		<a href="#services">View services</a>
+		<a href="#booking">Get in touch</a>
+	</div>
+</div>
+
+<style>
+	.hero-copy {
+		max-width: 1200px;
+	}
+
+	.hero-copy h1 {
+		margin-bottom: 3rem;
+	}
+
+	.lede {
+		font-size: 1.75rem;
+		line-height: 1.5;
+		max-width: 50ch;
+		margin-bottom: 2rem;
+	}
+
+	.hero-copy > p:not(.lede) {
+		max-width: 60ch;
+		color: var(--text-dim);
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: 1.5rem;
+		margin-top: 4rem;
+	}
+
+	.hero-actions a {
+		padding: 1rem 2.5rem;
+		font-size: 1rem;
+		font-weight: 500;
+		border: 1px solid var(--border);
+	}
+
+	.hero-actions a:first-child {
+		background: var(--accent);
+		color: #fff;
+		border-color: var(--accent);
+	}
+
+	.hero-actions a:hover {
+		border-color: var(--text);
+	}
+
+	.hero-actions a:first-child:hover {
+		background: var(--text);
+		color: #000;
+		border-color: var(--text);
+	}
+
+	@media (max-width: 640px) {
+		.hero-actions {
+			flex-direction: column;
+		}
+
+		.hero-actions a {
+			text-align: center;
+		}
+	}
+</style>
